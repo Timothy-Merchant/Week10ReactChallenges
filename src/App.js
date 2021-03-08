@@ -1,9 +1,14 @@
 import './App.css';
 import Squares from './components/squares/Squares';
+import SignUp from './components/passwords/SignUp';
 
 function App() {
   return (
-    <Squares color="hotpink" />
+    <>
+      <Squares color="hotpink" />
+      <SignUp minimumLength={12} />
+      <Max count={[1, 2, 3, 4]} />
+    </>
   );
 }
 

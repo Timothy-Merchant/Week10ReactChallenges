@@ -27,6 +27,7 @@ class SignUp extends Component {
 
         const password = this.state.password;
         const confirm = this.state.confirm;
+        
         const color = (password === confirm) &&
             (password.length && confirm.length >= this.props.minimumLength)
             ? "black" : "red";

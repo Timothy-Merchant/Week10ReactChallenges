@@ -1,4 +1,5 @@
 import { Component } from "react";
+import Button from 'react-bootstrap/Button';
 
 class Counter extends Component {
 
@@ -37,8 +38,8 @@ class Counter extends Component {
         return (
             <>
                 <p>{this.state.number}</p>
-                <button onClick={this.increment}>+</button>
-                <button onClick={this.decrement}>-</button>
+                <Button variant={this.props.primary === true ? "primary" : "secondary"} onClick={this.increment}>+</Button>
+                <Button variant={this.props.primary === true ? "primary" : "secondary"} onClick={this.decrement}>-</Button>
             </>
         );
     }

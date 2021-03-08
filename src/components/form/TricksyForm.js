@@ -15,7 +15,13 @@ class TricksyForm extends Component {
     }
 
     handleInput(inputtedData) {
-        this.state.data[inputtedData.name] = inputtedData.value;
+
+        this.setState({
+            data: {
+                ...this.state.data,
+                [inputtedData.name]: inputtedData.value
+            }
+        })
     }
 
     handleClick() {

@@ -5,6 +5,7 @@ import Max from './components/counters/Max';
 import Button from './components/button/Button';
 import Form from './components/form/Form';
 import TricksyForm from './components/form/TricksyForm';
+// import ToDoList from './components/todolist/ToDoList';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           { label: "Date of Birth", name: "dob", type: "date" },
         ]}
       />
+      {/* <ToDoList /> */}
     </>
   );
 }

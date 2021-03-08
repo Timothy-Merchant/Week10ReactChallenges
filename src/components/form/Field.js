@@ -4,7 +4,7 @@ class Field extends Component {
     constructor(props) {
 
         super(props)
- 
+
         this.handleChange = this.handleChange.bind(this)
     }
 
@@ -17,9 +17,7 @@ class Field extends Component {
 
     render() {
 
-        const { label } = this.props;
-        const { name } = this.props;
-        const { type } = this.props;
+        const { label, name, type } = this.props;
 
         return (
             <>

@@ -6,54 +6,44 @@ class SignUp extends Component {
     constructor(props) {
         super(props)
 
-        this.state = {
-            borderColors: "red",
+        this.state = {            
             password: "",
             confirm: ""
         }
 
         this.handlePasswordChange = this.handlePasswordChange.bind(this)
-        this.handleConfirmChange = this.handleConfirmChange.bind(this)
-        this.validatePasswords = this.validatePasswords.bind(this)
+        this.handleConfirmChange = this.handleConfirmChange.bind(this)        
     }
 
     handlePasswordChange(e) {
         this.setState({ password: e.currentTarget.value })
-        this.validatePasswords();
     }
 
     handleConfirmChange(e) {
         this.setState({ confirm: e.currentTarget.value })
-        this.validatePasswords();        
-    }
-
-    validatePasswords() {
-        if ((this.state.password === this.state.confirm) &&
-            (this.state.password.length && this.state.confirm.length >= this.props.minimumLength)) {
-            this.setState({
-                borderColors: "black"
-            })
-        } else {
-            this.setState({
-                borderColors: "red"
-            })
-        }
     }
 
     render() {
+
+        const password = this.state.password;
+        const confirm = this.state.confirm;
+        const color = (password === confirm) &&
+            (password.length && confirm.length >= this.props.minimumLength)
+            ? "black" : "red";
+
         return (
             <>
                 <h1>Passwords</h1>
                 <Password
                     handleChange={this.handlePasswordChange}
                     label="Password"
-                    color={this.state.borderColors}
+                    color={color}
                 />
                 <br></br>
                 <Password
                     handleChange={this.handleConfirmChange}
                     label="Confirm Password"
-                    color={this.state.borderColors} />
+                    color={color} />
                 <br></br>
             </>
         )

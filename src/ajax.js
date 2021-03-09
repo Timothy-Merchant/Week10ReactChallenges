@@ -1,5 +1,5 @@
 // import axios with configuration
-import axios from "./axios";
+// import axios from "./components/news/axios";
 
 // ...challenges here
 
@@ -49,12 +49,12 @@ import axios from "./axios";
 // })
 
 // 8
-axios.get("/tags").then(({data}) => console.log(data.data));
+// axios.get("/tags").then(({data}) => console.log(data.data));
 
 // Tricksy 1
 
 // Tricksy 2
-axios.get("/articles").then(({ data }) => {
-    let titles = data.data.map((article) => article.title)
-    console.log(titles);
-})
+// axios.get("/articles").then(({ data }) => {
+//     let titles = data.data.map((article) => article.title)
+//     console.log(titles);
+// })

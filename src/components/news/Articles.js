@@ -1,7 +1,6 @@
 import { Component } from 'react'
 import axios from "../../axios"
-import { Container, Row, Card } from "react-bootstrap"
-import { Link } from "react-router-dom"
+import { Container, Row, Card, Button } from "react-bootstrap"
 
 class Articles extends Component {
 
@@ -10,7 +9,7 @@ class Articles extends Component {
         super(props)
 
         this.state = {
-            articles: "",
+            articles: "",            
             id: 0
         }
 
@@ -20,9 +19,8 @@ class Articles extends Component {
 
     componentDidMount() {
         axios.get("/articles").then(({ data }) => {
-            this.setState({ articles: data.data })
+            this.setState({ articles: data.data.length === 0 ? "No Articles" : data.data })
         })
-
     }
 
     handleId(e) {
@@ -36,37 +34,40 @@ class Articles extends Component {
 
         return (
 
-            articles === "" ? "Loading..." :
-                <>
-                    <Container>
-                        <Row>
-                            <h1>Blog</h1>
-                        </Row>
+            articles === "" ? "Loading..." :                
+                    <>
+                        <Container>
+                            <Row>
+                                <h1>Blog</h1>
+                            </Row>
 
-                        {
-                            articles.map((article, index) => (
-                                <Row key={index}>
-                                    <Card style={{ width: '18rem' }}>
-                                        <Card.Body>
-                                            <Card.Title>{article.title}</Card.Title>
-                                            <Card.Text>{article.content}</Card.Text>
-                                            {article.tags.map((tag, index) => (
-                                                <Card.Link key={index} href="#">{tag}</Card.Link>
-                                            ))}
-                                        </Card.Body>
-                                    </Card>
-                                </Row>
+                            {
+                                articles.map((article, index) => (
+                                    <Row key={index}>
+                                        <Card style={{ width: '18rem' }}>
+                                            <Card.Body>
+                                                <Card.Title>{article.title}</Card.Title>
+                                                <Card.Text>{article.content}</Card.Text>
+                                                {article.tags.map((tag, index) => (
+                                                    <Card.Link key={index} href="#">{tag}</Card.Link>
+                                                ))}
+                                            </Card.Body>
+                                        </Card>
+                                    </Row>
 
-                            ))
-                        }
-                        <Row>
-                            <input type="number" onChange={this.handleId}></input>
-                        </Row>
-                        <Row>
-                            <Link to={`/news/${id}`}>Look up an article</Link>
-                        </Row>
-                    </Container>
-                </>
+                                ))
+                            }
+                            <Row>
+                                <input type="number" onChange={this.handleId}></input>
+                            </Row>
+                            <Row>
+                                <Button href={`/news/${id}`} variant="primary" type="submit">Find Article</Button>
+                            </Row>
+                            <Row>
+                                <Button href={`/news/create`} variant="primary" type="submit">Create Article</Button>
+                            </Row>
+                        </Container>
+                    </>
         )
 
     }

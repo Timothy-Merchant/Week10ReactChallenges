@@ -2,7 +2,6 @@ import { Component } from 'react'
 import axios from "../../axios"
 import Comments from "./Comments"
 import { Button, Card, Row, Container } from 'react-bootstrap';
-import { Link } from "react-router-dom"
 
 class Article extends Component {
 
@@ -63,7 +62,7 @@ class Article extends Component {
                             {showComments ? <Comments articleID={this.props.id} comments={comments} /> : null}
                         </Row>
                         <Row>
-                            <Link to="../news">Back</Link>
+                            <Button href="../news" variant="primary" type="submit">Back</Button>
                         </Row>
                     </Container>
                 </>

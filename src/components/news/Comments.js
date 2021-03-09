@@ -5,7 +5,7 @@ const Comments = ({ comments }) => {
     console.log(comments);
 
     return (
-        comments.length === 0 ? "No Comments" :
+        comments.length === 0 ? "No Comments" : 
             <>
                 {comments.map((comment, index) => (
                     <Card key={index} style={{ width: '18rem' }}>

@@ -6,13 +6,13 @@ class SignUp extends Component {
     constructor(props) {
         super(props)
 
-        this.state = {            
+        this.state = {
             password: "",
             confirm: ""
         }
 
         this.handlePasswordChange = this.handlePasswordChange.bind(this)
-        this.handleConfirmChange = this.handleConfirmChange.bind(this)        
+        this.handleConfirmChange = this.handleConfirmChange.bind(this)
     }
 
     handlePasswordChange(e) {
@@ -25,9 +25,8 @@ class SignUp extends Component {
 
     render() {
 
-        const password = this.state.password;
-        const confirm = this.state.confirm;
-        
+        const { password, confirm } = this.state;
+
         const color = (password === confirm) &&
             (password.length && confirm.length >= this.props.minimumLength)
             ? "black" : "red";

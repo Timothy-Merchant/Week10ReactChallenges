@@ -24,11 +24,14 @@ class Form extends Component {
     }
 
     handleClick() {
+
+        this.props.handleSubmit({...this.state});
+
         this.setState({
             name: "",
             email: ""
         })
-        this.props.handleSubmit({ ...this.state });
+
     }
 
     render() {
@@ -36,14 +39,12 @@ class Form extends Component {
             <>
                 <h1>Form</h1>
                 <div className="form-group">
-                    <label>Name</label>
-                    <br></br>
-                    <input onChange={this.handleNameChange} placeholder="<contents of name input>" className="form-control" id="name" name="name" type="text" value={this.state.name} />
+                    <label>Name</label>                    
+                    <input onChange={this.handleNameChange} placeholder="Name Here" className="form-control" id="name" name="name" type="text" value={this.state.name} />
                 </div>
                 <div className="form-group">
-                    <label>Email</label>
-                    <br></br>
-                    <input onChange={this.handleEmailChange} placeholder="<contents of email input>" className="form-control" id="email" email="email" type="text" value={this.state.email} />
+                    <label>Email</label>                    
+                    <input onChange={this.handleEmailChange} placeholder="Email Here" className="form-control" id="email" email="email" type="text" value={this.state.email} />
                 </div>
                 <button type="submit" onClick={this.handleClick}>Submit</button>
             </>

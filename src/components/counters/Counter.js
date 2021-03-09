@@ -1,5 +1,4 @@
 import { Component } from "react";
-import Button from 'react-bootstrap/Button';
 
 class Counter extends Component {
 
@@ -35,11 +34,13 @@ class Counter extends Component {
 
     render() {
 
+        const variant = this.props.primary === true ? "red" : "blue";
+
         return (
             <>
                 <p>{this.state.number}</p>
-                <Button variant={this.props.primary === true ? "primary" : "secondary"} onClick={this.increment}>+</Button>
-                <Button variant={this.props.primary === true ? "primary" : "secondary"} onClick={this.decrement}>-</Button>
+                <button style={{ backgroundColor: variant }} onClick={this.increment}>+</button>
+                <button style={{ backgroundColor: variant }} onClick={this.decrement}>-</button>
             </>
         );
     }

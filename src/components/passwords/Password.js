@@ -1,4 +1,4 @@
-const Password = ({ label, handleChange, color}) => {
+const Password = ({ label, handleChange, color }) => {
 
     return (
         <>

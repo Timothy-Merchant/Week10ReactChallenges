@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import axios from "../../axios"
-import Card from "react-bootstrap/Card";
+import Card from "react-bootstrap/Card"
+import { Link } from "react-router-dom"
 
 class Articles extends Component {
 
@@ -9,8 +10,11 @@ class Articles extends Component {
         super(props)
 
         this.state = {
-            articles: ""
+            articles: "",
+            id: 0 
         }
+
+        this.handleId = this.handleId.bind(this);
 
     }
 
@@ -18,11 +22,17 @@ class Articles extends Component {
         axios.get("/articles").then(({ data }) => {
             this.setState({ articles: data.data })
         })
+
+    }
+
+    handleId(e) {
+        this.setState({ id: e.currentTarget.value });
     }
 
     render() {
 
         const articles = this.state.articles;
+        const id = this.state.id;
 
         return (
 
@@ -44,6 +54,8 @@ class Articles extends Component {
 
                         ))
                     }
+                    <input type="number" onChange={this.handleId}></input>
+                    <Link to={`news/${id}`}>Look up an article</Link>
                 </>
         )
 

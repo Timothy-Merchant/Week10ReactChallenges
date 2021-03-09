@@ -42,7 +42,7 @@ function App() {
           </Route>
           <Route path="/news/:id" render={({ match }) => (
             <Article id={match.params.id} />
-          )} />
+          )} />          
           <FourOhFour />
         </Switch>
       </Router>

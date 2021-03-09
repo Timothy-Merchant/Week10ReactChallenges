@@ -33,3 +33,12 @@ import axios from "./axios";
 // axios.delete("/articles/38").then((response) => {
 //     console.log(response);
 // })
+
+// 6
+axios.post("/articles/37/comments", {
+    email: "ajax@ajax.com",
+    comment: "Hello world"
+}).then(({ data }) => {
+    console.log(data.data.id);
+    console.log(data.data.comment);
+})

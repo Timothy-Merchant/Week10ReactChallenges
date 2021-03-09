@@ -16,6 +16,15 @@ import axios from "./axios";
 // });
 
 // 3
-axios.get("/articles/15").then(({data}) => {
-    console.log(data);
-})
+// axios.get("/articles/15").then(({data}) => {
+//     console.log(data);
+// })
+
+// 4
+axios.patch("/articles/15", {
+    tags: ["spoons", "science", "spoon truther"]
+}).then((response) => {
+    console.log(response);
+}, (error) => {
+    console.log(error);
+});

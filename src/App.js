@@ -4,6 +4,7 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Squares from './components/squares/Squares';
 import SignUp from './components/passwords/SignUp';
 import Max from './components/counters/Max';

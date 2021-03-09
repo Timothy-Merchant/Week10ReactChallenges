@@ -1,8 +1,8 @@
 import { Component } from 'react'
 import axios from "../../axios"
-import Card from "react-bootstrap/Card";
 import Comments from "./Comments"
-import { Button } from 'react-bootstrap';
+import { Button, Card, Row, Container } from 'react-bootstrap';
+import { Link } from "react-router-dom"
 
 class Article extends Component {
 
@@ -38,18 +38,28 @@ class Article extends Component {
         return (
             article === "" ? "Loading..." :
                 <>
-                    <Card style={{ width: '18rem' }}>
-                        <Card.Body>
-                            <Card.Title>{article.title}</Card.Title>
-                            <Card.Text>{article.content}</Card.Text>
-                            {article.tags.map((tag, index) => (
-                                <Card.Link key={index} href="#">{tag}</Card.Link>
-                            ))}
-                        </Card.Body>
-                    </Card>
-
-                    <Button onClick={this.toggleComments}>Show Comments</Button>
-                    {showComments ? <Comments articleID={this.props.id} /> : null}
+                    <Container>
+                        <Row>
+                            <Card style={{ width: '18rem' }}>
+                                <Card.Body>
+                                    <Card.Title>{article.title}</Card.Title>
+                                    <Card.Text>{article.content}</Card.Text>
+                                    {article.tags.map((tag, index) => (
+                                        <Card.Link key={index} href="#">{tag}</Card.Link>
+                                    ))}
+                                </Card.Body>
+                            </Card>
+                        </Row>
+                        <Row>
+                            <Button onClick={this.toggleComments}>Show Comments</Button>
+                        </Row>
+                        <Row>
+                            {showComments ? <Comments articleID={this.props.id} /> : null}
+                        </Row>
+                        <Row>
+                            <Link to="../news">Back</Link>
+                        </Row>
+                    </Container>
                 </>
         )
 

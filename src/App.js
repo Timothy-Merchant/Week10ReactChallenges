@@ -13,6 +13,7 @@ import TricksyForm from './components/form/TricksyForm';
 import FourOhFour from './components/news/FourOhFour';
 // import ToDoList from './components/todolist/ToDoList';
 import Articles from './components/news/Articles';
+import Article from './components/news/Article';
 
 function App() {
   return (
@@ -35,14 +36,15 @@ function App() {
           />
           {/* <ToDoList /> */}
         </Route>
-        <Route exact path="/news">
-          <Switch>
+        <Switch>
+          <Route exact path="/news">
             <Articles />
-            <Route path="/blog">
-            </Route>
-            <FourOhFour />
-          </Switch>
-        </Route>
+          </Route>
+          <Route path="/news/:id" render={({ match }) => (
+            <Article id={match.params.id} />
+          )} />
+          <FourOhFour />
+        </Switch>
       </Router>
     </>
   );

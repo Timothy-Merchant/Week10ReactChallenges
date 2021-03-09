@@ -35,10 +35,26 @@ import axios from "./axios";
 // })
 
 // 6
-axios.post("/articles/37/comments", {
-    email: "ajax@ajax.com",
-    comment: "Hello world"
-}).then(({ data }) => {
-    console.log(data.data.id);
-    console.log(data.data.comment);
+// axios.post("/articles/37/comments", {
+//     email: "ajax@ajax.com",
+//     comment: "Hello world"
+// }).then(({ data }) => {
+//     console.log(data.data.id);
+//     console.log(data.data.comment);
+// })
+
+// 7
+// axios.get("/articles/37/comments").then(({ data }) => {
+//     console.log(data.data);
+// })
+
+// 8
+axios.get("/tags").then(({data}) => console.log(data.data));
+
+// Tricksy 1
+
+// Tricksy 2
+axios.get("/articles").then(({ data }) => {
+    let titles = data.data.map((article) => article.title)
+    console.log(titles);
 })

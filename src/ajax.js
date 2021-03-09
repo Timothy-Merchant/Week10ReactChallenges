@@ -21,10 +21,15 @@ import axios from "./axios";
 // })
 
 // 4
-axios.patch("/articles/15", {
-    tags: ["spoons", "science", "spoon truther"]
-}).then((response) => {
-    console.log(response);
-}, (error) => {
-    console.log(error);
-});
+// axios.patch("/articles/15", {
+//     tags: ["spoons", "science", "spoon truther"]
+// }).then((response) => {
+//     console.log(response);
+// }, (error) => {
+//     console.log(error);
+// });
+
+// 5
+// axios.delete("/articles/38").then((response) => {
+//     console.log(response);
+// })

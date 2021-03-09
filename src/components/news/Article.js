@@ -12,6 +12,7 @@ class Article extends Component {
 
         this.state = {
             article: "",
+            comments: "",
             showComments: false
         }
 
@@ -26,14 +27,19 @@ class Article extends Component {
     }
 
     componentDidMount() {
+
         axios.get(`/articles/${this.props.id}`).then(({ data }) => {
             this.setState({ article: data.data })
+        })
+
+        axios.get(`/articles/${this.props.id}/comments`).then(({ data }) => {
+            this.setState({ comments: data.data })
         })
     }
 
     render() {
 
-        const { article, showComments } = this.state;
+        const { article, comments, showComments } = this.state;
 
         return (
             article === "" ? "Loading..." :
@@ -54,7 +60,7 @@ class Article extends Component {
                             <Button onClick={this.toggleComments}>Show Comments</Button>
                         </Row>
                         <Row>
-                            {showComments ? <Comments articleID={this.props.id} /> : null}
+                            {showComments ? <Comments articleID={this.props.id} comments={comments} /> : null}
                         </Row>
                         <Row>
                             <Link to="../news">Back</Link>

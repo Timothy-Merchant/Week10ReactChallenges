@@ -63,7 +63,7 @@ class Articles extends Component {
                             <input type="number" onChange={this.handleId}></input>
                         </Row>
                         <Row>
-                            <Link to={`news/${id}`}>Look up an article</Link>
+                            <Link to={`/news/${id}`}>Look up an article</Link>
                         </Row>
                     </Container>
                 </>

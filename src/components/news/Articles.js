@@ -10,7 +10,7 @@ class Articles extends Component {
 
         this.state = {
             articles: "",
-            ids: 0
+            id: 0
         }
 
         this.handleId = this.handleId.bind(this);

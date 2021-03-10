@@ -16,6 +16,7 @@ import FourOhFour from './components/news/FourOhFour';
 import Articles from './components/news/Articles';
 import Article from './components/news/Article';
 import CreateArticle from './components/news/CreateArticle';
+import EditArticle from './components/news/EditArticle';
 
 function App() {
   return (
@@ -45,6 +46,9 @@ function App() {
           <Route path="/news/create">
             <CreateArticle />
           </Route>
+          <Route path="/news/:id/edit" render={({ match }) => (
+            <EditArticle id={match.params.id} />
+          )} />
           <Route path="/news/:id" render={({ match }) => (
             <Article id={match.params.id} />
           )} />

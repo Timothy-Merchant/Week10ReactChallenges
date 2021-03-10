@@ -20,6 +20,7 @@ import EditArticle from './components/news/EditArticle';
 import Clicked from './components/hooks/Clicked';
 import Square from './components/hooks/Square';
 import ToggleText from './components/hooks/ToggleText';
+import Counter from './components/hooks/Counter';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Clicked />
           <Square colour="hotpink" />
           <ToggleText initial="Hello" alternate="World" />
+          <Counter initial={ 3 } max={ 6 } />
         </Route>
         <Route exact path="/challenges">
           <Squares color="hotpink" />

@@ -2,12 +2,15 @@ import { useState } from "react";
 
 const Clicked = () => {
 
-    let  [counter, setCounter] = useState(0);
+    let [counter, setCounter] = useState(0);
 
     let handleClick = () => setCounter(counter + 1);
 
     return (
-        <p onClick={handleClick}>{counter}</p>
+        <>
+            <h3>Clicked</h3>
+            <p onClick={handleClick}>{counter}</p>
+        </>
     );
 }
 

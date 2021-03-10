@@ -18,6 +18,7 @@ import Article from './components/news/Article';
 import CreateArticle from './components/news/CreateArticle';
 import EditArticle from './components/news/EditArticle';
 import Clicked from './components/hooks/Clicked';
+import Square from './components/hooks/Square';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
       <Router>
         <Route exact path="/hooks">
           <Clicked />
+          <Square colour="hotpink" />
         </Route>
         <Route exact path="/challenges">
           <Squares color="hotpink" />

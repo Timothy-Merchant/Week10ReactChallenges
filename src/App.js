@@ -17,11 +17,15 @@ import Articles from './components/news/Articles';
 import Article from './components/news/Article';
 import CreateArticle from './components/news/CreateArticle';
 import EditArticle from './components/news/EditArticle';
+import Clicked from './components/hooks/Clicked';
 
 function App() {
   return (
     <>
       <Router>
+        <Route exact path="/hooks">
+          <Clicked />
+        </Route>
         <Route exact path="/challenges">
           <Squares color="hotpink" />
           <SignUp minimumLength={12} />

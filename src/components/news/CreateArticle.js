@@ -20,7 +20,6 @@ class CreateArticle extends Component {
         this.handleContent = this.handleContent.bind(this);
         this.handleTags = this.handleTags.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-
     }
 
     handleTitle(e) {
@@ -31,9 +30,8 @@ class CreateArticle extends Component {
         this.setState({ content: e.currentTarget.value });
     }
 
-    handleTags(e) {
-        const handledTags = e.currentTarget.value.split(/\s*,\s*/);
-        this.setState({ tags: handledTags });
+    handleTags(e) {        
+        this.setState({ tags: e.currentTarget.value });
     }
 
     handleSubmit(e) {
@@ -44,7 +42,7 @@ class CreateArticle extends Component {
         axios.post("/articles", {
             title: title,
             content: content,
-            tags: tags
+            tags: tags.split(/\s*,\s*/)
         }).then((response) => {
             console.log(response);
         }, (error) => {
@@ -53,7 +51,6 @@ class CreateArticle extends Component {
                 errors: error.response.data.errors
             });
             console.log(this.state.errors);
-
         });
     };
 
@@ -68,7 +65,7 @@ class CreateArticle extends Component {
                         <h1>Create an Article</h1>
                     </Row>
                     <Row>
-                        <Form>
+                        <Form onSubmit={this.handleSubmit}>
                             <Form.Group controlId="formTitle">
                                 <Form.Label>Title</Form.Label>
                                 <Form.Control onChange={this.handleTitle} type="text" placeholder="Enter a title" />
@@ -90,7 +87,7 @@ class CreateArticle extends Component {
                                     {error ? errors["tags"] : null}
                                 </Form.Text>
                             </Form.Group>
-                            <Button variant="primary" onClick={this.handleSubmit}>
+                            <Button type="submit" variant="primary">
                                 Submit
                             </Button>
                         </Form>
@@ -101,9 +98,7 @@ class CreateArticle extends Component {
                 </Container>
             </>
         )
-
     }
-
 }
 
 export default CreateArticle

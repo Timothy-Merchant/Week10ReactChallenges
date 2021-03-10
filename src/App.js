@@ -22,6 +22,7 @@ import Square from './components/hooks/Square';
 import ToggleText from './components/hooks/ToggleText';
 import Counter from './components/hooks/Counter';
 import StepCounter from './components/hooks/StepCounter';
+import CatchMeIfYouCan from './components/hooks/CatchMeIfYouCan';
 
 function App() {
   return (
@@ -31,8 +32,9 @@ function App() {
           <Clicked />
           <Square colour="hotpink" />
           <ToggleText initial="Hello" alternate="World" />
-          <Counter initial={ 3 } max={ 6 } />
-          <StepCounter max={ 100 } step={ 5 } />
+          <Counter initial={3} max={6} />
+          <StepCounter max={100} step={5} />
+          <CatchMeIfYouCan jump={100} />
         </Route>
         <Route exact path="/challenges">
           <Squares color="hotpink" />

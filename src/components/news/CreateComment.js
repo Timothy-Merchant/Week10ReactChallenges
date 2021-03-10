@@ -9,6 +9,8 @@ class CreateComment extends Component {
         super(props)
 
         this.state = {
+            error: false,
+            errors: [],
             email: "",
             comment: ""
         }
@@ -37,10 +39,18 @@ class CreateComment extends Component {
             comment: comment
         }).then((response) => {
             console.log(response);
+        }, (error) => {
+            this.setState({
+                error: true,
+                errors: error.response.data.errors
+            });
+            console.log(this.state.errors);
         });
     }
 
     render() {
+
+        const { error, errors } = this.state;
 
         return (
             <>
@@ -54,14 +64,14 @@ class CreateComment extends Component {
                                 <Form.Label>Email</Form.Label>
                                 <Form.Control onChange={this.handleEmail} type="email" placeholder="Enter email" />
                                 <Form.Text className="text-muted">
-                                    ＊Must be a valid email
+                                    {error ? errors["email"] : null}
                                 </Form.Text>
                             </Form.Group>
                             <Form.Group controlId="formContent">
                                 <Form.Label>Comment</Form.Label>
                                 <Form.Control onChange={this.handleComment} type="text" placeholder="Enter comment" />
                                 <Form.Text className="text-muted">
-                                    ＊Must be under 200 characters
+                                    {error ? errors["comment"] : null}
                                 </Form.Text>
                             </Form.Group>
                             <Button variant="primary" onClick={this.handleSubmit}>

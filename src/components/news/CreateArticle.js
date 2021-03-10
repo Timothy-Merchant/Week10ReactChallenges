@@ -9,6 +9,8 @@ class CreateArticle extends Component {
         super(props)
 
         this.state = {
+            error: false,
+            errors: [],
             title: "",
             content: "",
             tags: "",
@@ -44,55 +46,64 @@ class CreateArticle extends Component {
             content: content,
             tags: tags
         }).then((response) => {
-            console.log(response);            
+            console.log(response);
+        }, (error) => {
+            this.setState({
+                error: true,
+                errors: error.response.data.errors
+            });
+            console.log(this.state.errors);
+
         });
-    }
+    };
 
-        render() {
+    render() {
 
-            return (
-                <>
-                    <Container>
-                        <Row>
-                            <h1>Create an Article</h1>
-                        </Row>
-                        <Row>
-                            <Form>
-                                <Form.Group controlId="formTitle">
-                                    <Form.Label>Title</Form.Label>
-                                    <Form.Control onChange={this.handleTitle} type="text" placeholder="Enter a title" />
-                                    <Form.Text className="text-muted">
-                                        ＊Must be under 30 characters
+        const { error, errors } = this.state;
+
+        return (
+            <>
+                <Container>
+                    <Row>
+                        <h1>Create an Article</h1>
+                    </Row>
+                    <Row>
+                        <Form>
+                            <Form.Group controlId="formTitle">
+                                <Form.Label>Title</Form.Label>
+                                <Form.Control onChange={this.handleTitle} type="text" placeholder="Enter a title" />
+                                <Form.Text className="text-muted">
+                                    {error ? errors["title"] : null}
                                 </Form.Text>
-                                </Form.Group>
-                                <Form.Group controlId="formContent">
-                                    <Form.Label>Content</Form.Label>
-                                    <Form.Control onChange={this.handleContent} type="text" placeholder="Enter article content" />
-                                    <Form.Text className="text-muted">
-                                        ＊Must be under 200 characters
+                            </Form.Group>
+                            <Form.Group controlId="formContent">
+                                <Form.Label>Content</Form.Label>
+                                <Form.Control onChange={this.handleContent} type="text" placeholder="Enter article content" />
+                                <Form.Text className="text-muted">
+                                    {error ? errors["content"] : null}
                                 </Form.Text>
-                                </Form.Group>
-                                <Form.Group controlId="formTags">
-                                    <Form.Label>Tags</Form.Label>
-                                    <Form.Control onChange={this.handleTags} type="text" placeholder="Enter tags" />
-                                    <Form.Text className="text-muted">
-                                        ＊Please submit tags with a comma and space between each.
+                            </Form.Group>
+                            <Form.Group controlId="formTags">
+                                <Form.Label>Tags</Form.Label>
+                                <Form.Control onChange={this.handleTags} type="text" placeholder="Enter tags" />
+                                <Form.Text className="text-muted">
+                                    {error ? errors["tags"] : null}
                                 </Form.Text>
-                                </Form.Group>
-                                <Button variant="primary" onClick={this.handleSubmit}>
-                                    Submit
+                            </Form.Group>
+                            <Button variant="primary" onClick={this.handleSubmit}>
+                                Submit
                             </Button>
-                            </Form>
-                        </Row>
-                        <Row>
-                            <Button href="../news" variant="primary" type="submit">Back</Button>
-                        </Row>
-                    </Container>
-                </>
-            )
-
-        }
+                        </Form>
+                    </Row>
+                    <Row>
+                        <Button href="../news" variant="primary" type="submit">Back</Button>
+                    </Row>
+                </Container>
+            </>
+        )
 
     }
 
-    export default CreateArticle
+}
+
+export default CreateArticle

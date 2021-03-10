@@ -1,5 +1,4 @@
 import { Component } from 'react'
-import { Redirect } from 'react-router-dom'
 import axios from "../../axios"
 import { Form, Container, Row, Button } from "react-bootstrap"
 import { generatePath } from "react-router";
@@ -14,6 +13,7 @@ class EditArticle extends Component {
 
         this.state = {
             error: false,
+            errors: [],
             article: "",
             title: "",
             content: "",
@@ -60,17 +60,17 @@ class EditArticle extends Component {
         }, (error) => {
             console.log(error);
             this.setState({
-                error: true
+                error: true,
+                errors: error.response.data.errors
             })
         });
     }
 
     render() {
 
-        const { article, error } = this.state;
+        const { article, error, errors } = this.state;
 
-        return (
-            error ? <Redirect to="/somewhere/else" /> :
+        return (            
                 <>
                     <Container>
                         <Row>
@@ -82,22 +82,22 @@ class EditArticle extends Component {
                                     <Form.Label>Title</Form.Label>
                                     <Form.Control onChange={this.handleTitle} defaultValue={article.title} type="text" placeholder="Enter a title" />
                                     <Form.Text className="text-muted">
-                                        ＊Must be under 30 characters
-                                </Form.Text>
+                                        {error ? errors["title"] : null}
+                                    </Form.Text>
                                 </Form.Group>
                                 <Form.Group controlId="formContent">
                                     <Form.Label>Content</Form.Label>
                                     <Form.Control onChange={this.handleContent} defaultValue={article.content} type="text" placeholder="Enter article content" />
                                     <Form.Text className="text-muted">
-                                        ＊Must be under 200 characters
-                                </Form.Text>
+                                        {error ? errors["content"] : null}
+                                    </Form.Text>
                                 </Form.Group>
                                 <Form.Group controlId="formTags">
                                     <Form.Label>Tags</Form.Label>
                                     <Form.Control onChange={this.handleTags} defaultValue={article.tags} type="text" placeholder="Enter tags" />
                                     <Form.Text className="text-muted">
-                                        ＊Please submit tags with a comma and space between each.
-                                </Form.Text>
+                                        {error ? errors["tags"] : null}
+                                    </Form.Text>
                                 </Form.Group>
                                 <Button variant="primary" onClick={this.handleSubmit}>
                                     Submit

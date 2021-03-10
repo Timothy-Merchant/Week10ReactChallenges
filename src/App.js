@@ -25,6 +25,7 @@ import StepCounter from './components/hooks/StepCounter';
 import CatchMeIfYouCan from './components/hooks/CatchMeIfYouCan';
 import RollCall from './components/hooks/RollCall';
 import PasswordStrength from './components/hooks/PasswordStrength';
+import TempConverter from './components/hooks/TempConverter';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <CatchMeIfYouCan jump={100} />
           <RollCall names={["cloud", "tifa", "squall", "garnet"]} />
           <PasswordStrength />
+          <TempConverter />
         </Route>
         <Route exact path="/challenges">
           <Squares color="hotpink" />

@@ -19,6 +19,7 @@ import CreateArticle from './components/news/CreateArticle';
 import EditArticle from './components/news/EditArticle';
 import Clicked from './components/hooks/Clicked';
 import Square from './components/hooks/Square';
+import ToggleText from './components/hooks/ToggleText';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route exact path="/hooks">
           <Clicked />
           <Square colour="hotpink" />
+          <ToggleText initial="Hello" alternate="World" />
         </Route>
         <Route exact path="/challenges">
           <Squares color="hotpink" />

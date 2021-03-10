@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import axios from "../../axios"
 import Comments from "./Comments"
+import CreateComment from "./CreateComment"
 import { Button, Card, Row, Container } from 'react-bootstrap';
 
 class Article extends Component {
@@ -29,11 +30,7 @@ class Article extends Component {
 
         axios.get(`/articles/${this.props.id}`).then(({ data }) => {
             this.setState({ article: data.data })
-        })
-
-        axios.get(`/articles/${this.props.id}/comments`).then(({ data }) => {
-            this.setState({ comments: data.data })
-        })
+        })        
     }
 
     render() {
@@ -60,6 +57,9 @@ class Article extends Component {
                         </Row>
                         <Row>
                             {showComments ? <Comments articleID={this.props.id} comments={comments} /> : null}
+                        </Row>
+                        <Row>
+                            <CreateComment articleID={this.props.id} />
                         </Row>
                         <Row>
                             <Button href="../news" variant="primary" type="submit">Back</Button>

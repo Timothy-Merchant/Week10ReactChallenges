@@ -9,8 +9,8 @@ class Articles extends Component {
         super(props)
 
         this.state = {
-            articles: "",            
-            id: 0
+            articles: "",
+            ids: 0
         }
 
         this.handleId = this.handleId.bind(this);
@@ -34,40 +34,40 @@ class Articles extends Component {
 
         return (
 
-            articles === "" ? "Loading..." :                
-                    <>
-                        <Container>
-                            <Row>
-                                <h1>Blog</h1>
-                            </Row>
+            articles === "" ? "Loading..." :
+                <>
+                    <Container>
+                        <Row>
+                            <h1>Blog</h1>
+                        </Row>
 
-                            {
-                                articles.map((article, index) => (
-                                    <Row key={index}>
-                                        <Card style={{ width: '18rem' }}>
-                                            <Card.Body>
-                                                <Card.Title>{article.title}</Card.Title>
-                                                <Card.Text>{article.content}</Card.Text>
-                                                {article.tags.map((tag, index) => (
-                                                    <Card.Link key={index} href="#">{tag}</Card.Link>
-                                                ))}
-                                            </Card.Body>
-                                        </Card>
-                                    </Row>
+                        {
+                            articles.map((article, index) => (
+                                <Row key={index}>
+                                    <Card style={{ width: '18rem' }}>
+                                        <Card.Body>
+                                            <Card.Title>{article.title}</Card.Title>
+                                            <Card.Text>{article.content}</Card.Text>
+                                            {article.tags.map((tag, index) => (
+                                                <Card.Link key={index} href="#">{tag}</Card.Link>
+                                            ))}
+                                        </Card.Body>
+                                    </Card>
+                                </Row>
 
-                                ))
-                            }
-                            <Row>
-                                <input type="number" onChange={this.handleId}></input>
-                            </Row>
-                            <Row>
-                                <Button href={`/news/${id}`} variant="primary" type="submit">Find Article</Button>
-                            </Row>
-                            <Row>
-                                <Button href={`/news/create`} variant="primary" type="submit">Create Article</Button>
-                            </Row>
-                        </Container>
-                    </>
+                            ))
+                        }
+                        <Row>
+                            <input type="number" onChange={this.handleId}></input>
+                        </Row>
+                        <Row>
+                            <Button href={`/news/${id}`} variant="primary" type="submit">Find Article</Button>
+                        </Row>
+                        <Row>
+                            <Button href={`/news/create`} variant="primary" type="submit">Create Article</Button>
+                        </Row>
+                    </Container>
+                </>
         )
 
     }

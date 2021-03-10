@@ -23,6 +23,7 @@ import ToggleText from './components/hooks/ToggleText';
 import Counter from './components/hooks/Counter';
 import StepCounter from './components/hooks/StepCounter';
 import CatchMeIfYouCan from './components/hooks/CatchMeIfYouCan';
+import RollCall from './components/hooks/RollCall';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Counter initial={3} max={6} />
           <StepCounter max={100} step={5} />
           <CatchMeIfYouCan jump={100} />
+          <RollCall names={["cloud", "tifa", "squall", "garnet"]} />
         </Route>
         <Route exact path="/challenges">
           <Squares color="hotpink" />

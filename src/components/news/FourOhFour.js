@@ -1,4 +1,16 @@
-const FourOhFour = () => <p>404: Page not found</p>;
+import { Button, Row, Container } from 'react-bootstrap';
+const FourOhFour = () => {
+    return (
+        <>
+            <Container>
+                <p>404: Page not found</p>
+                <Row>
+                    <Button href="../news" variant="primary" type="submit">Back</Button>
+                </Row>
+            </Container>
+        </>
+    )
+}
 export default FourOhFour;
 
 

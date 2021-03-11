@@ -40,3 +40,15 @@ export const updateItem = (state, { index, value }) => {
     return updatedItems
 
 }
+
+export const completeItem = (state, { index }) => {
+
+    let newItems = JSON.parse(JSON.stringify(state.items));
+    newItems[index].completed = true;
+
+    let updatedItems = {
+        items: newItems
+    }
+
+    return updatedItems;
+}

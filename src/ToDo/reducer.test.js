@@ -76,14 +76,24 @@ it('updates items', () => {
 
     // update the item at index 0
     updated = updateItem(many, { index: 0, value: "Good Morning" });
-
     // check that the completed value is the same
     expect(updated.items[0]).toEqual({ task: "Good Morning", completed: true });
 });
 
-// it('completes items', () => {
-//     // Completing tests here
-// });
+it('completes items', () => {
+    let many = {
+        items: [
+            { task: "Hello", completed: true },
+            { task: "Mum", completed: false },
+        ]
+    };
+
+    // complete the item at index 1
+    let completed = completeItem(many, { index: 1 });
+
+    // expected completed to be true
+    expect(completed.items[1]).toEqual({ task: "Mum", completed: true });
+});
 
 // it('reduces', () => {
 //     // Reducer tests here

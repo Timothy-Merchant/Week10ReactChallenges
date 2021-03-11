@@ -27,6 +27,8 @@ import RollCall from './components/hooks/RollCall';
 import PasswordStrength from './components/hooks/PasswordStrength';
 import TempConverter from './components/hooks/TempConverter';
 import List from './components/hooks/List';
+import Colours from './components/hooks/Colours';
+import Die from './components/hooks/Die';
 
 function App() {
   return (
@@ -43,6 +45,12 @@ function App() {
           <PasswordStrength />
           <TempConverter />
           <List />
+          <Colours colours={["#C14412",
+            "#EBB31A",
+            "#8F5318",
+            "#009EAD",
+            "#395967",]} />
+          <Die sides={6} />
         </Route>
         <Route exact path="/challenges">
           <Squares color="hotpink" />

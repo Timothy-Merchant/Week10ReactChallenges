@@ -1,22 +1,20 @@
 import { useReducer } from "react";
 import reducer from "./reducer";
 
-const StepCounter2 = ({ max, step }) => {
+const initialState = {
+    counter: 0,        
+}
 
-    let initialState = {
-        counter: 0,
-        max: max,
-        step: step
-    }
+const StepCounter2 = ({ max, step }) => {
 
     const [{ counter }, dispatch] = useReducer(reducer, initialState)
 
     let handleAdd = () => {
-        dispatch({ type: "ADD_CLICKED" })
+        dispatch({ type: "ADD_CLICKED", step: step, max: max})
     }
 
     let handleSub = () => {
-        dispatch({ type: "SUB_CLICKED" })
+        dispatch({ type: "SUB_CLICKED", step: step})
     }
 
     return (

@@ -32,6 +32,7 @@ import Die from './components/hooks/Die';
 import ToDoList from './components/todolist/ToDoList';
 import Clicked2 from './components/reducer/Clicked2';
 import StepCounter2 from './components/reducer/StepCounter2';
+import TempConverter2 from './components/reducer/TempConverter2';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route exact path="/reduce">
           <Clicked2 />
           <StepCounter2 max={100} step={5} />
+          <TempConverter2 max={100} step={5} />
         </Route>
         <Route exact path="/advanced">
           <ToDoList />

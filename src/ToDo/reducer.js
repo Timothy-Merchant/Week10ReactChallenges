@@ -20,10 +20,23 @@ export const removeItem = (state, { index }) => {
 
     newItems.splice(index, 1);
 
-    let removed = {
+    let remainingItems = {
         items: newItems
     }
 
-    return removed;
+    return remainingItems;
+
+}
+
+export const updateItem = (state, { index, value }) => {
+
+    let newItems = Array.from(state.items);
+    newItems[index].task = value;
+
+    let updatedItems = {
+        items: newItems
+    }
+
+    return updatedItems
 
 }

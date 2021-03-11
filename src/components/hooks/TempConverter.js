@@ -6,13 +6,13 @@ const TempConverter = () => {
     let [fahrenheit, setFahrenheit] = useState(0);
 
     let handleCelsius = (e) => {
-        let value = e.currentTarget.value;
+        let value = +e.currentTarget.value;
         setCelsius(`${value}`);
         setFahrenheit((value * (9 / 5) + 32).toFixed(2));
     }
 
     let handleFahrenheit = (e) => {
-        let value = e.currentTarget.value;
+        let value = +e.currentTarget.value;
         setFahrenheit(`${value}`);
         setCelsius((value * (9 / 5) - 32).toFixed(2));
     }

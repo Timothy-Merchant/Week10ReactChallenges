@@ -42,7 +42,7 @@ class CreateComment extends Component {
         }, (error) => {
             this.setState({
                 error: true,
-                errors: error.response.data.errors
+                errors: error.response.data.errors                
             });
             console.log(this.state.errors);
         });
@@ -62,7 +62,7 @@ class CreateComment extends Component {
                         <Form>
                             <Form.Group controlId="formTitle">
                                 <Form.Label>Email</Form.Label>
-                                <Form.Control onChange={this.handleEmail} type="email" placeholder="Enter email" />
+                                <Form.Control value="" onChange={this.handleEmail} type="email" placeholder="Enter email" />
                                 <Form.Text className="text-muted">
                                     {error ? errors["email"] : null}
                                 </Form.Text>

@@ -9,24 +9,25 @@ class Articles extends Component {
         super(props)
 
         this.state = {
-            articles: "",
+            articles: {},
+            loading: true
         }
     }
 
     componentDidMount() {
         axios.get("/articles").then(({ data }) => {
-            this.setState({ articles: data.data.length === 0 ? "No Articles" : data.data })
+            this.setState({ articles: data.data, loading: false })
         })
     }
 
     render() {
 
-        const articles = this.state.articles;
+        const { loading, articles } = this.state;
 
         return (
 
-            articles === "" ? "Loading..." :
-                <>
+            <>
+                {loading ? <p>loading...</p> : (
                     <Container>
                         <Row>
                             <h1>Blog</h1>
@@ -53,7 +54,8 @@ class Articles extends Component {
                             <Button href={`/news/create`} variant="primary" type="submit">Create Article</Button>
                         </Row>
                     </Container>
-                </>
+                )}
+            </>
         )
 
     }

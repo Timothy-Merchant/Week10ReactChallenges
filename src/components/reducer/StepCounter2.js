@@ -9,7 +9,7 @@ const StepCounter2 = ({ max, step }) => {
         step: step
     }
 
-    const [state, dispatch] = useReducer(reducer, initialState)
+    const [{ counter }, dispatch] = useReducer(reducer, initialState)
 
     let handleAdd = () => {
         dispatch({ type: "ADD_CLICKED" })
@@ -21,8 +21,8 @@ const StepCounter2 = ({ max, step }) => {
 
     return (
         <>
-            <h3>Step Counter</h3>
-            <p>{state.counter}</p>
+            <h3>Step Counter2</h3>
+            <p>{counter}</p>
             <button onClick={handleAdd}>+</button>
             <button onClick={handleSub}>-</button>
         </>

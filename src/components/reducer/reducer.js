@@ -6,15 +6,14 @@ let clicked = (state) => {
 let addClicked = (state) => {
     state = {
         ...state,
-        counter: state.counter + state.step,
+        counter: state.counter + state.step <= state.max ? state.counter + state.step : state.max
     };
     return state;
 };
-
 let subClicked = (state) => {
     state = {
         ...state,
-        counter: state.counter - state.step,
+        counter: state.counter - state.step >= 0 ? state.counter - state.step : state.counter
     };
     return state;
 };

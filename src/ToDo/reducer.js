@@ -1,6 +1,6 @@
 export const addItem = (state, { value }) => {
 
-    let newItems = state.items;
+    let newItems = Array.from(state.items);
 
     newItems.push({
         task: value,

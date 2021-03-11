@@ -14,6 +14,7 @@ it('adds items', () => {
 
     // first item in the items array should be a new task with "Hello"
     expect(result.items[0]).toEqual({ task: "Hello", completed: false });
+    expect(result.items).not.toBe(initialState.items);
 });
 
 // it('removes items', () => {

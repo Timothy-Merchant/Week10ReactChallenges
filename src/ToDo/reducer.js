@@ -9,7 +9,21 @@ export const addItem = (state, { value }) => {
 
     state = {
         items: newItems
-    }   
+    }
 
     return state;
 };
+
+export const removeItem = (state, { index }) => {
+
+    let newItems = Array.from(state.items);
+
+    newItems.splice(index, 1);
+
+    let removed = {
+        items: newItems
+    }
+
+    return removed;
+
+}

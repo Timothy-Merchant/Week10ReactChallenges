@@ -26,9 +26,25 @@ it('adds items', () => {
     expect(result.items[1]).toEqual({ task: "Mum", completed: false });
 });
 
-// it('removes items', () => {
-//     // Removing tests here
-// });
+it('removes items', () => {
+    // start with a few items
+    let many = {
+        items: [
+            { task: "Hello", completed: true },
+            { task: "Mum", completed: false },
+            { task: "How", completed: false },
+            { task: "Are", completed: true },
+            { task: "You", completed: false },
+            { task: "Today", completed: false },
+        ]
+    };
+
+    // remove item at index 0
+    let removed = removeItem(many, { index: 0 });
+
+    // "Hello" should be gone, so should get back "Mum" task
+    expect(removed.items[0]).toEqual({ task: "Mum", completed: false });
+});
 
 // it('updates items', () => {
 //     // Updating tests here

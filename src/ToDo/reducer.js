@@ -30,7 +30,7 @@ export const removeItem = (state, { index }) => {
 
 export const updateItem = (state, { index, value }) => {
 
-    let newItems = Array.from(state.items);
+    let newItems = JSON.parse(JSON.stringify(state.items));
     newItems[index].task = value;
 
     let updatedItems = {

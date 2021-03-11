@@ -1,8 +1,32 @@
-// import { Component } from "react";
+import { Component } from "react";
+import Input from "./Input";
 
-// class ToDoList extends Component {
 
+class ToDoList extends Component {
 
-// }
+    constructor(props) {
 
-// export default ToDoList;
+        super(props)
+
+        this.state = {
+
+        }
+
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+
+    }
+
+    render() {
+        return (
+            <>
+                <Input />                
+            </>
+        )
+    }
+
+}
+
+export default ToDoList;

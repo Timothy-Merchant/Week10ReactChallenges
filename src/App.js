@@ -29,11 +29,19 @@ import TempConverter from './components/hooks/TempConverter';
 import List from './components/hooks/List';
 import Colours from './components/hooks/Colours';
 import Die from './components/hooks/Die';
+import ToDoList from './components/todolist/ToDoList';
+import Clicked2 from './components/reducer/Clicked2';
 
-function App() {
+function App() { 
   return (
     <>
       <Router>
+        <Route exact path="/reduce">
+          <Clicked2 />
+        </Route>
+        <Route exact path="/advanced">
+          <ToDoList />
+        </Route>
         <Route exact path="/hooks">
           <Clicked />
           <Square colour="hotpink" />

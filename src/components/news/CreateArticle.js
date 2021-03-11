@@ -68,21 +68,21 @@ class CreateArticle extends Component {
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Group controlId="formTitle">
                                 <Form.Label>Title</Form.Label>
-                                <Form.Control onChange={this.handleTitle} type="text" placeholder="Enter a title" />
+                                <Form.Control value="" onChange={this.handleTitle} type="text" placeholder="Enter a title" />
                                 <Form.Text className="text-muted">
                                     {error ? errors["title"] : null}
                                 </Form.Text>
                             </Form.Group>
                             <Form.Group controlId="formContent">
                                 <Form.Label>Content</Form.Label>
-                                <Form.Control onChange={this.handleContent} type="text" placeholder="Enter article content" />
+                                <Form.Control value="" onChange={this.handleContent} type="text" placeholder="Enter article content" />
                                 <Form.Text className="text-muted">
                                     {error ? errors["content"] : null}
                                 </Form.Text>
                             </Form.Group>
                             <Form.Group controlId="formTags">
                                 <Form.Label>Tags</Form.Label>
-                                <Form.Control onChange={this.handleTags} type="text" placeholder="Enter tags" />
+                                <Form.Control value="" onChange={this.handleTags} type="text" placeholder="Enter tags" />
                                 <Form.Text className="text-muted">
                                     {error ? errors["tags"] : null}
                                 </Form.Text>

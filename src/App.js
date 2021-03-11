@@ -31,13 +31,15 @@ import Colours from './components/hooks/Colours';
 import Die from './components/hooks/Die';
 import ToDoList from './components/todolist/ToDoList';
 import Clicked2 from './components/reducer/Clicked2';
+import StepCounter2 from './components/reducer/StepCounter2';
 
-function App() { 
+function App() {
   return (
     <>
       <Router>
         <Route exact path="/reduce">
           <Clicked2 />
+          <StepCounter2 max={100} step={5} />
         </Route>
         <Route exact path="/advanced">
           <ToDoList />

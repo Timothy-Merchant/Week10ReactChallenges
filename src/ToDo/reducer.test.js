@@ -93,8 +93,20 @@ it('completes items', () => {
 
     // expected completed to be true
     expect(completed.items[1]).toEqual({ task: "Mum", completed: true });
+
+    // check that it's not the same object being returned
+    expect(completed.items[1]).not.toBe(many.items[1]);
+
+    // complete item at index 0
+    completed = completeItem(many, { index: 0 });
+    // should still be marked as completed
+    expect(completed.items[0]).toEqual({ task: "Hello", completed: true });
 });
 
-// it('reduces', () => {
-//     // Reducer tests here
-// });
+it('reduces', () => {
+    // pass in a nonsense action
+    let newState = reducer(initialState, { type: "GOTTA_CATCH_EM_ALL" });
+
+    // get back initial state
+    expect(newState).toBe(initialState);
+});

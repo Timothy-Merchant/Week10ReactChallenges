@@ -1,6 +1,6 @@
 export const addItem = (state, { value }) => {
 
-    let newItems = Array.from(state.items);
+    let newItems = JSON.parse(JSON.stringify(state.items));
 
     newItems.push({
         task: value,
@@ -16,7 +16,7 @@ export const addItem = (state, { value }) => {
 
 export const removeItem = (state, { index }) => {
 
-    let newItems = Array.from(state.items);
+    let newItems = JSON.parse(JSON.stringify(state.items));
 
     newItems.splice(index, 1);
 
@@ -31,6 +31,7 @@ export const removeItem = (state, { index }) => {
 export const updateItem = (state, { index, value }) => {
 
     let newItems = JSON.parse(JSON.stringify(state.items));
+
     newItems[index].task = value;
 
     let updatedItems = {
@@ -44,6 +45,7 @@ export const updateItem = (state, { index, value }) => {
 export const completeItem = (state, { index }) => {
 
     let newItems = JSON.parse(JSON.stringify(state.items));
+
     newItems[index].completed = true;
 
     let updatedItems = {
@@ -52,3 +54,9 @@ export const completeItem = (state, { index }) => {
 
     return updatedItems;
 }
+
+export default (state, action) => {
+    switch (action.type) {                
+        default: return state;
+    }
+};

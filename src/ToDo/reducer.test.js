@@ -2,11 +2,13 @@ import reducer, {
     addItem,
     removeItem,
     updateItem,
-    completeItem
+    completeItem,
+    startButtonPressed
 } from './reducer';
 
 const initialState = {
-    items: []
+    items: [],
+    nowButtonVisible: false
 };
 
 it('adds items', () => {
@@ -135,4 +137,14 @@ it('reduces', () => {
     newState = reducer(newState, { type: "MARK_COMPLETED", index: 1 });
     // check it's been updated
     expect(newState.items[1]).toEqual({ task: "Dad", completed: true });
+});
+
+//Lamegame tests
+
+
+it('displays now button when start clicked', () => {
+    let result = startButtonPressed(initialState);
+    
+    expect(result.nowButtonVisible).toEqual(true);
+    expect(result.nowButtonVisible).not.toBe(initialState.nowButtonVisible);
 });

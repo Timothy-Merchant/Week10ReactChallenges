@@ -64,3 +64,15 @@ export default (state, action) => {
         default: return state;
     }
 };
+
+// Lame Game
+
+// Create a <LameGame aim={ x }> component. When a "Start" button is pressed it displays "{ aim } seconds" and shows a "Now" button. The idea is to click the "Now" button as close to aim seconds after you pressed "Start". Once you click on "Now" it should tell you how close you were in 1/10ths of a second. The "Start" and "Now" buttons should only show when relevant.
+
+export const startButtonPressed = (state) => {
+    let newState = Object.assign({}, state);
+
+    newState.nowButtonVisible = true;    
+
+    return newState;
+}

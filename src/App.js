@@ -34,6 +34,8 @@ import Clicked2 from './components/reducer/Clicked2';
 import StepCounter2 from './components/reducer/StepCounter2';
 import TempConverter2 from './components/reducer/TempConverter2';
 import List from './ToDo/List';
+import LameGame from './ToDo/LameGame';
+import Random from './animal-facts/Random';
 
 function App() {
   return (
@@ -47,6 +49,12 @@ function App() {
           </Route>
           <Route exact path="/todolist">
             <List />
+          </Route>
+          <Route exact path="/quiz">
+            <Random />
+          </Route>
+          <Route exact path="/lamegame">
+            <LameGame aim={5} />
           </Route>
           <Route exact path="/advanced">
             <ToDoList />

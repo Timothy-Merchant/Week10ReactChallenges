@@ -4,7 +4,7 @@ import axios from "../axios";
 
 const Random = () => {
 
-    let [animalfact, setAnimalfact] = useState({});    
+    let [animalfact, setAnimalfact] = useState({});
 
     const handleClick = () => {
         axios.get("/animal-facts/random").then(({ data }) => {
@@ -25,20 +25,20 @@ const Random = () => {
             <h3>Random</h3>
             <Card
                 // danger
-                bg={animalfact.made_up ? "danger" : "primary"}                
+                bg={animalfact.made_up ? "danger" : "primary"}
                 text="light"
                 style={{ width: '18rem' }}
                 className="mb-2"
             >
-                <Card.Header>Header</Card.Header>
+                <Card.Header>Animal Facts!</Card.Header>
                 <Card.Body>
-                    <Card.Title>{"Info"} {animalfact.by} </Card.Title>
+                    <Card.Title>{animalfact.by} </Card.Title>
                     <Card.Text>
                         {animalfact.fact}
                     </Card.Text>
+                    <Button variant="danger" onClick={handleClick}>New Fact</Button>
                 </Card.Body>
             </Card>
-            <Button onClick={handleClick}>New Fact</Button>
 
         </>
     );

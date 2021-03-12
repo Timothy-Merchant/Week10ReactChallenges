@@ -36,6 +36,7 @@ import TempConverter2 from './components/reducer/TempConverter2';
 import List from './ToDo/List';
 import LameGame from './ToDo/LameGame';
 import Random from './animal-facts/Random';
+import Post from './animal-facts/Post';
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
           </Route>
           <Route exact path="/quiz">
             <Random />
+            <Post/>
           </Route>
           <Route exact path="/lamegame">
             <LameGame aim={5} />

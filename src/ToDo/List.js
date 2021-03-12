@@ -4,7 +4,10 @@ import reducer from "./reducer";
 // initial state
 // put in some dummy content to start with
 const initialState = {
-    items: []
+    items: [{
+        task: "Test Task",
+        completed: false
+    }]
 };
 
 // component
@@ -33,7 +36,12 @@ const List = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch({ type: "NEW_ITEM", value: input})
+        dispatch({ type: "NEW_ITEM", value: input })
+        setInput("")
+    }
+
+    const handleEdit = (index, input) => {
+        dispatch({ type: "CHANGE_ITEM", index, value: input })
         setInput("")
     }
 
@@ -69,7 +77,9 @@ const List = () => {
                                 >{item.task}</span>
 
                                 { /* edit button */}
-                                <button className="btn btn-sm btn-primary mr-1">Edit</button>
+                                <button className="btn btn-sm btn-primary mr-1" onClick={() =>
+                                    handleEdit(index, input)
+                                }>Edit</button>
 
                                 { /* remove button */}
                                 <button className="btn btn-sm btn-danger" onClick={() => handleDelete(index)}>&times;</button>

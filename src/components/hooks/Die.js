@@ -2,11 +2,11 @@ import { useState } from "react"
 
 const Die = ({ sides }) => {
 
-    let [number, setNumber] = useState(1);
+    const [number, setNumber] = useState(1);
 
-    let handleClick = () => {
-        let random = Math.random();
-        let randNumber = Math.floor(random * sides + 1);
+    const handleClick = () => {
+        const random = Math.random();
+        const randNumber = Math.floor(random * sides + 1);
         setNumber(randNumber);
     }
 

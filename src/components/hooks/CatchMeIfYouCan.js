@@ -3,13 +3,14 @@ import { useState } from "react"
 
 const CatchMeIfYouCan = ({ jump }) => {
 
-    let [top, setTop] = useState(0);
+    const [top, setTop] = useState(0);
 
-    let handleClick = () => setTop(top + jump);
+    const handleClick = () => setTop(top + jump);
 
     return (
         <>
-            <button style={{ position: "absolute", top: top }} onClick={handleClick}>Click Me</button>
+            <h3>CatchMeIfYouCan</h3>
+            <button style={{ position: "relative", top: top }} onClick={handleClick}>Click Me</button>
         </>
     );
 }

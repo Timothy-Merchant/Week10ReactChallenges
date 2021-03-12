@@ -1,27 +1,40 @@
-import { useState } from "react"
+import { useState } from "react";
+
+const calculateColor = length => {
+    if (length < 9) {
+        return "red"; // if less than 9 then red
+    }
+
+    if (length < 16) {
+        return "orange"; // if less than 16 then orange
+    }
+
+    return "green"; // otherwise green
+};
+
+const calculateStyle = length => {
+    // no styling (empty object) if empty
+    // otherwise work out colour with length
+    return length === 0 ? {} : {
+        background: calculateColor(length)
+    };
+};
 
 const PasswordStrength = () => {
+    const [value, setValue] = useState("");
 
-
-    let [color, setColor] = useState(null);
-
-    const validatePassword = (e) => setColor(
-        e.currentTarget.value.length === 0 ? null :
-            e.currentTarget.value.length < 9 ? "red" :
-                e.currentTarget.value.length < 16 ? "orange" : "green"
-    );
-
-
+    const handleChange = (e) => setValue(e.currentTarget.value);
 
     return (
-        <>
-            <h3>Password Strength</h3>
-            <input onChange={validatePassword} type="password" style={{
-                backgroundColor: color
-            }}></input>
-        </>
-    )
-
+        <div className="form-group mt-4">
+            <input
+                style={ calculateStyle(value.length) }
+                className="form-control"
+                onChange={ handleChange }
+                value={ value }
+            />
+        </div>
+    );
 }
 
-export default PasswordStrength
+export default PasswordStrength;

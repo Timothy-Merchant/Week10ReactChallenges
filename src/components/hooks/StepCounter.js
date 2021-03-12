@@ -4,8 +4,8 @@ const StepCounter = ({ max, step }) => {
 
     let [count, setCount] = useState(0);
 
-    let handleAdd = () => setCount((count + step) < max ? count + step : count)
-    let handleSub = () => setCount((count - step) > 0 ? count - step : count)
+    let handleAdd = () => setCount((count + step) <= max ? count + step : count)
+    let handleSub = () => setCount((count - step) >= 0 ? count - step : count)
 
     return (
         <>

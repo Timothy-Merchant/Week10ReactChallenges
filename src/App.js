@@ -26,66 +26,66 @@ import CatchMeIfYouCan from './components/hooks/CatchMeIfYouCan';
 import RollCall from './components/hooks/RollCall';
 import PasswordStrength from './components/hooks/PasswordStrength';
 import TempConverter from './components/hooks/TempConverter';
-import List from './components/hooks/List';
+// import List from './components/hooks/List';
 import Colours from './components/hooks/Colours';
 import Die from './components/hooks/Die';
 import ToDoList from './components/todolist/ToDoList';
 import Clicked2 from './components/reducer/Clicked2';
 import StepCounter2 from './components/reducer/StepCounter2';
 import TempConverter2 from './components/reducer/TempConverter2';
-import ToDoList2 from './components/reducer/ToDoList2';
+import List from './ToDo/List';
 
 function App() {
   return (
     <>
       <Router>
-        <Route exact path="/reduce">
-          <Clicked2 />
-          <StepCounter2 max={100} step={5} />
-          <TempConverter2 max={100} step={5} />
-        </Route>
-        <Route exact path="/todolist">
-          <ToDoList2 />
-        </Route>
-        <Route exact path="/advanced">
-          <ToDoList />
-        </Route>
-        <Route exact path="/hooks">
-          <Clicked />
-          <Square colour="hotpink" />
-          <ToggleText initial="Hello" alternate="World" />
-          <Counter initial={3} max={6} />
-          <StepCounter max={100} step={5} />
-          <CatchMeIfYouCan jump={100} />
-          <RollCall names={["cloud", "tifa", "squall", "garnet"]} />
-          <PasswordStrength />
-          <TempConverter />
-          <List />
-          <Colours colours={["#C14412",
-            "#EBB31A",
-            "#8F5318",
-            "#009EAD",
-            "#395967",]} />
-          <Die sides={6} />
-        </Route>
-        <Route exact path="/challenges">
-          <Squares color="hotpink" />
-          <SignUp minimumLength={12} />
-          <Max count={[1, 2, 3, 4]} />
-          <Button handleUpdate={(value) => console.log(value)} />
-          <Form handleSubmit={(value) => console.log(value)} />
-          <TricksyForm
-            handleSubmit={(value) => console.log(value)}
-            fields={[
-              { label: "Name", name: "name", type: "text" },
-              { label: "E-mail", name: "email", type: "email" },
-              { label: "Telephone Number", name: "telephone", type: "tel" },
-              { label: "Date of Birth", name: "dob", type: "date" },
-            ]}
-          />
-          {/* <ToDoList /> */}
-        </Route>
         <Switch>
+          <Route exact path="/reduce">
+            <Clicked2 />
+            <StepCounter2 max={100} step={5} />
+            <TempConverter2 max={100} step={5} />
+          </Route>
+          <Route exact path="/todolist">
+            <List />
+          </Route>
+          <Route exact path="/advanced">
+            <ToDoList />
+          </Route>
+          <Route exact path="/hooks">
+            <Clicked />
+            <Square colour="hotpink" />
+            <ToggleText initial="Hello" alternate="World" />
+            <Counter initial={3} max={6} />
+            <StepCounter max={100} step={5} />
+            <CatchMeIfYouCan jump={100} />
+            <RollCall names={["cloud", "tifa", "squall", "garnet"]} />
+            <PasswordStrength />
+            <TempConverter />
+            {/* <List /> */}
+            <Colours colours={["#C14412",
+              "#EBB31A",
+              "#8F5318",
+              "#009EAD",
+              "#395967",]} />
+            <Die sides={6} />
+          </Route>
+          <Route exact path="/challenges">
+            <Squares color="hotpink" />
+            <SignUp minimumLength={12} />
+            <Max count={[1, 2, 3, 4]} />
+            <Button handleUpdate={(value) => console.log(value)} />
+            <Form handleSubmit={(value) => console.log(value)} />
+            <TricksyForm
+              handleSubmit={(value) => console.log(value)}
+              fields={[
+                { label: "Name", name: "name", type: "text" },
+                { label: "E-mail", name: "email", type: "email" },
+                { label: "Telephone Number", name: "telephone", type: "tel" },
+                { label: "Date of Birth", name: "dob", type: "date" },
+              ]}
+            />
+            {/* <ToDoList /> */}
+          </Route>
           <Route exact path="/news">
             <Articles />
           </Route>

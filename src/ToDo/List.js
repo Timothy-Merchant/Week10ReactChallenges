@@ -29,6 +29,10 @@ const List = () => {
         setInput(e.currentTarget.value);
     };
 
+    const handleDelete = (index) => {        
+        dispatch({ type: "REMOVE_ITEM", index })
+    }
+
     return (
         <div className="card">
             <form className="card-header">
@@ -59,10 +63,10 @@ const List = () => {
                                 >{item.task}</span>
 
                                 { /* edit button */}
-                                <button class="btn btn-sm btn-primary mr-1">Edit</button>
+                                <button className="btn btn-sm btn-primary mr-1">Edit</button>
 
                                 { /* remove button */}
-                                <button class="btn btn-sm btn-danger">&times;</button>
+                                <button className="btn btn-sm btn-danger" onClick={() => handleDelete(index)}>&times;</button>
                             </li>
                         ))}
                     </ul>

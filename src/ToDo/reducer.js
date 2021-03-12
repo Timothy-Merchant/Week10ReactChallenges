@@ -1,6 +1,6 @@
 export const addItem = (state, { value }) => {
 
-    let newItems = JSON.parse(JSON.stringify(state.items));
+    let newItems = [...state.items];
 
     newItems.push({
         task: value,
@@ -16,7 +16,7 @@ export const addItem = (state, { value }) => {
 
 export const removeItem = (state, { index }) => {
 
-    let newItems = JSON.parse(JSON.stringify(state.items));
+    let newItems = [...state.items];
 
     newItems.splice(index, 1);
 
@@ -30,7 +30,7 @@ export const removeItem = (state, { index }) => {
 
 export const updateItem = (state, { index, value }) => {
 
-    let newItems = JSON.parse(JSON.stringify(state.items));
+    let newItems = state.items.map(item => Object.assign({}, item));
 
     newItems[index].task = value;
 
@@ -44,7 +44,7 @@ export const updateItem = (state, { index, value }) => {
 
 export const completeItem = (state, { index }) => {
 
-    let newItems = JSON.parse(JSON.stringify(state.items));
+    let newItems = state.items.map(item => Object.assign({}, item));
 
     newItems[index].completed = true;
 

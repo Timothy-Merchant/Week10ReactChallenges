@@ -1,59 +1,29 @@
-export const addItem = (state, { value }) => {
-
-    let newItems = [...state.items];
-
-    newItems.push({
-        task: value,
-        completed: false
-    })
-
-    state = {
-        items: newItems
+export const addItem = (state, { value }) => (
+    {
+        ...state,
+        items: [
+            ...state.items, {
+                task: value,
+                completed: false
+            }
+        ]
     }
+);
 
-    return state;
-};
+export const removeItem = (state, { index }) => ({
+    ...state,
+    items: state.items.filter((item, i) => index !== i)
+})
 
-export const removeItem = (state, { index }) => {
+export const updateItem = (state, { index, value }) => ({
+    ...state,
+    items: state.items.map((item, i) => index !== i ? item : { ...item, task: value })
+})
 
-    let newItems = [...state.items];
-
-    newItems.splice(index, 1);
-
-    let remainingItems = {
-        items: newItems
-    }
-
-    return remainingItems;
-
-}
-
-export const updateItem = (state, { index, value }) => {
-
-    let newItems = state.items.map(item => Object.assign({}, item));
-
-    newItems[index].task = value;
-
-    let updatedItems = {
-        items: newItems
-    }
-
-    return updatedItems
-
-}
-
-export const completeItem = (state, { index }) => {
-
-    let newItems = state.items.map(item => Object.assign({}, item));
-
-    newItems[index].completed = true;
-
-    let updatedItems = {
-        items: newItems
-    }
-
-    return updatedItems;
-}
+export const completeItem = (state, { index }) => ({
+    ...state,
+    items: state.items.map((item, i) => index !== i ? item : { ...item, completed: true })
+})
 
 export default (state, action) => {
     switch (action.type) {
@@ -72,7 +42,7 @@ export default (state, action) => {
 export const startButtonPressed = (state) => {
     let newState = Object.assign({}, state);
 
-    newState.nowButtonVisible = true;    
+    newState.nowButtonVisible = true;
 
     return newState;
 }

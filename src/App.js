@@ -37,6 +37,7 @@ import List from './ToDo/List';
 import LameGame from './ToDo/LameGame';
 import Random from './animal-facts/Random';
 import Post from './animal-facts/Post';
+import Posts from './animal-facts/Posts';
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
           <Route exact path="/quiz">
             <Random />
             <Post/>
+            <Posts/>
           </Route>
           <Route exact path="/lamegame">
             <LameGame aim={5} />

@@ -7,6 +7,7 @@ const Post = () => {
     let [animalfact, setAnimalfact] = useState({
         fact: "",
         made_up: false,
+        submitted: false
     });
 
     const handleFactChange = (e) => {
@@ -22,7 +23,13 @@ const Post = () => {
         });
     }
 
+    const handleBack = () => {
+        setAnimalfact({ fact: "", made_up: false, submitted: false })
+    }
+
     const handleSubmit = () => {
+        setAnimalfact({ ...animalfact, submitted: true })
+
         axios.post("/animal-facts", {
             fact: animalfact.fact,
             made_up: animalfact.made_up
@@ -33,7 +40,6 @@ const Post = () => {
         <>
             <h3>Post</h3>
             <Card
-                // danger
                 bg={"primary"}
                 text="light"
                 style={{ width: '18rem' }}
@@ -41,21 +47,28 @@ const Post = () => {
             >
                 <Card.Header>Animal Facts</Card.Header>
                 <Card.Body>
-                    <Card.Title>Add your own animal fact here:</Card.Title>
-                        <Form onSubmit={handleSubmit}>
-                            <Form.Group>
-                                <Form.Control value={animalfact.fact} onChange={handleFactChange} type="text" placeholder="Your animal fact here..." />
-                            </Form.Group>
-                            <Form.Group controlId="formBasicCheckbox">
-                                <Form.Check type="checkbox" label="Made up fact?" onChange={handleTrueChange} />
-                            </Form.Group>
-                            <Form.Group>
-                                <Button variant="danger" type="submit">Submit New Fact</Button>
-                            </Form.Group>
-                        </Form>                    
+                    {animalfact.submitted ?
+                        <>
+                            <Card.Title>Thanks!</Card.Title>
+                            <Button onClick={handleBack} variant="danger" type="submit">Go Back</Button>
+                        </> :
+                        <>
+                            <Card.Title>Add your own animal fact here:</Card.Title>
+                            <Form onSubmit={handleSubmit}>
+                                <Form.Group>
+                                    <Form.Control value={animalfact.fact} onChange={handleFactChange} type="text" placeholder="Your animal fact here..." />
+                                </Form.Group>
+                                <Form.Group controlId="formBasicCheckbox">
+                                    <Form.Check type="checkbox" label="Made up fact?" onChange={handleTrueChange} />
+                                </Form.Group>
+                                <Form.Group>
+                                    <Button variant="danger" type="submit">Submit New Fact</Button>
+                                </Form.Group>
+                            </Form>
+                        </>
+                    }
                 </Card.Body>
             </Card>
-
         </>
     );
 }

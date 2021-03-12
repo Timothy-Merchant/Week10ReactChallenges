@@ -4,13 +4,7 @@ import reducer from "./reducer";
 // initial state
 // put in some dummy content to start with
 const initialState = {
-    items: [{
-        task: "Do First Thing",
-        completed: false,
-    }, {
-        task: "Do Second Thing",
-        completed: true,
-    }],
+    items: []
 };
 
 // component
@@ -29,13 +23,24 @@ const List = () => {
         setInput(e.currentTarget.value);
     };
 
-    const handleDelete = (index) => {        
+    const handleDelete = (index) => {
         dispatch({ type: "REMOVE_ITEM", index })
     }
 
+    const handleComplete = (index) => {
+        dispatch({ type: "MARK_COMPLETED", index })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch({ type: "NEW_ITEM", value: input})
+        setInput("")
+    }
+
+
     return (
         <div className="card">
-            <form className="card-header">
+            <form onSubmit={handleSubmit} className="card-header">
                 { /* add task input */}
                 <input
                     className="form-control"
@@ -55,6 +60,7 @@ const List = () => {
                             >
                                 { /* strike-through for completed items */}
                                 <span
+                                    onClick={() => { handleComplete(index) }}
                                     className="flex-grow-1"
                                     style={{
                                         cursor: "pointer",

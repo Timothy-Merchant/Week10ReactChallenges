@@ -6,7 +6,7 @@ const Post = () => {
 
     let [animalfact, setAnimalfact] = useState({
         fact: "",
-        made_up: false,        
+        made_up: false,
     });
 
     const handleFactChange = (e) => {
@@ -42,7 +42,6 @@ const Post = () => {
                 <Card.Header>Animal Facts</Card.Header>
                 <Card.Body>
                     <Card.Title>Add your own animal fact here:</Card.Title>
-                    <Card.Text>
                         <Form onSubmit={handleSubmit}>
                             <Form.Group>
                                 <Form.Control value={animalfact.fact} onChange={handleFactChange} type="text" placeholder="Your animal fact here..." />
@@ -50,9 +49,10 @@ const Post = () => {
                             <Form.Group controlId="formBasicCheckbox">
                                 <Form.Check type="checkbox" label="Made up fact?" onChange={handleTrueChange} />
                             </Form.Group>
-                            <Button variant="danger" type="submit">Submit New Fact</Button>
-                        </Form>
-                    </Card.Text>
+                            <Form.Group>
+                                <Button variant="danger" type="submit">Submit New Fact</Button>
+                            </Form.Group>
+                        </Form>                    
                 </Card.Body>
             </Card>
 
